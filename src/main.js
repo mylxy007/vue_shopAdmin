@@ -2,6 +2,13 @@
 import axios from 'axios'
 // 配置请求的根路径
 axios.defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1';
+// 通过axios请求拦截器添加token，保证拥有获取数据的权限
+axios.interceptors.request.use(config => {
+  //为请求头对象，添加 token 验证的 Authorization 字段
+  config.headers.Authorization = sessionStorage.getItem('token')
+  //最后必须 return config
+  return config
+})
 //把axios挂载到$http
 Vue.prototype.$http = axios;
 //引入全局样式
@@ -19,7 +26,14 @@ import {
   Form,
   FormItem,
   Input,
-  Message
+  Message,
+  Container,
+  Header,
+  Aside,
+  Main,
+  Menu,
+  Submenu,
+  MenuItem
 } from 'element-ui'
 //使用vue-router
 Vue.use(VueRouter)
@@ -27,6 +41,14 @@ Vue.use(Button)
 Vue.use(Form)
 Vue.use(FormItem)
 Vue.use(Input)
+Vue.use(Container)
+Vue.use(Header)
+Vue.use(Aside)
+Vue.use(Main)
+Vue.use(Menu)
+Vue.use(Submenu)
+Vue.use(MenuItem)
+
 //弹窗组件挂载到Vue原型上
 Vue.prototype.$message = Message
 // 关闭生产提示

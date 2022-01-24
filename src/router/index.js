@@ -1,6 +1,7 @@
 import VueRouter from "vue-router"
 import Login from '../view/Login'
 import Home from '../view/Home'
+import Welcome from '../view/Welcome'
 //创建路由规则
 const router = new VueRouter({
     routes: [{
@@ -14,7 +15,12 @@ const router = new VueRouter({
         },
         {
             path: '/home',
-            component: Home
+            component: Home,
+            redirect: '/welcome',
+            children: [{
+                path: '/welcome',
+                component: Welcome
+            }]
         }
     ]
 })
