@@ -2,6 +2,7 @@ import VueRouter from "vue-router"
 import Login from '../view/Login'
 import Home from '../view/Home'
 import Welcome from '../view/Welcome'
+import Users from '../view/Users'
 //创建路由规则
 const router = new VueRouter({
     routes: [{
@@ -18,9 +19,14 @@ const router = new VueRouter({
             component: Home,
             redirect: '/welcome',
             children: [{
-                path: '/welcome',
-                component: Welcome
-            }]
+                    path: '/welcome',
+                    component: Welcome
+                },
+                {
+                    path: '/users',
+                    component: Users
+                }
+            ]
         }
     ]
 })

@@ -22,6 +22,7 @@
                     :collapse="isCollapse"
                     :collapse-transition="false"
                     router
+                    :default-active="activePath"
                 >
                     <!-- 一级菜单下有二级菜单，用submenu -->
                     <el-submenu
@@ -39,6 +40,7 @@
                             v-for="subItem in item.children"
                             :key="subItem.id"
                             :index="'/' + subItem.path"
+                            @click="saveNavState('/' + subItem.path)"
                         >
                             <i class="el-icon-menu"></i>
                             <span>{{ subItem.authName }}</span>
@@ -99,6 +101,11 @@ export default {
         //左侧菜单栏显示/隐藏切换
         toggleCollapse() {
             this.isCollapse = !this.isCollapse;
+        },
+        //保存链接的激活状态
+        saveNavState(activePath) {
+            sessionStorage.setItem("activePath", activePath);
+            this.activePath = activePath;
         },
     },
 };
