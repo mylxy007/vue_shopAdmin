@@ -3,6 +3,8 @@ import Login from '../component/Login'
 import Home from '../component/Home'
 import Welcome from '../component/Welcome'
 import Users from '../component/user/Users'
+import Rights from '../component/power/Rights'
+import Roles from '../component/power/Roles'
 //创建路由规则
 const router = new VueRouter({
     routes: [{
@@ -25,6 +27,14 @@ const router = new VueRouter({
                 {
                     path: '/users',
                     component: Users
+                },
+                {
+                    path: '/rights',
+                    component: Rights
+                },
+                {
+                    path: '/roles',
+                    component: Roles
                 }
             ]
         }
