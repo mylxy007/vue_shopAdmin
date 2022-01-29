@@ -11,6 +11,12 @@ axios.interceptors.request.use(config => {
 })
 //把axios挂载到$http
 Vue.prototype.$http = axios;
+// 按需引入element-ui
+import './assets/js/element.js'
+//引入vue-table-with-tree-grid树形表格组件
+import TreeTable from 'vue-table-with-tree-grid'
+//使用TreeTable
+Vue.component('tree-table', TreeTable);
 //引入全局样式
 import './assets/css/global.css'
 import Vue from 'vue'
@@ -20,11 +26,9 @@ import App from './App.vue'
 import VueRouter from 'vue-router'
 //引入router
 import router from './router'
-// 按需引入element-ui
-import './assets/js/element.js'
+
 //使用vue-router
 Vue.use(VueRouter)
-
 
 // 关闭生产提示
 Vue.config.productionTip = false
